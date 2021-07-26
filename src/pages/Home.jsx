@@ -1,35 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
+import useSpeechToText from 'react-hook-speech-to-text';
+import Unsplash from 'react-unsplash-wrapper'
 
-import CustomLink from '@/components/CustomLink';
 
 export default function Home() {
-  return (
-    <>
-      <main>
-        <section className='bg-dark'>
-          <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
-            <CustomLink href='https://github.com/theodorusclarence/vite-react-tailwind-starter'>
-              <h1>Vite React Tailwind Starter</h1>
-            </CustomLink>
-            <p className='mb-4'>
-              By{' '}
-              <CustomLink href='https://theodorusclarence.com'>
-                Theodorus Clarence
-              </CustomLink>
-            </p>
+  const {
+    error,
+    interimResult,
+    isRecording,
+    results,
+    startSpeechToText,
+    stopSpeechToText,
+  } = useSpeechToText({
+    continuous: true,
+    useLegacyResults: false,
+    speechRecognitionProperties: {
+      lang: 'id-ID',
+      interimResults: true, // Allows for displaying real-time speech results
+    }
+  });
 
-            <div className='mt-8 text-dark'>
-              <p className='text-[#ffe347]'>JIT is on</p>
-            </div>
-            <footer className='absolute text-gray-300 bottom-2'>
-              © {new Date().getFullYear()}{' '}
-              <CustomLink href='https://theodorusclarence.com'>
-                Theodorus Clarence
-              </CustomLink>
-            </footer>
-          </div>
-        </section>
-      </main>
-    </>
+  if(typeof results[0] === 'object' && results[0] !== null) {
+     console.log(results[results.length - 1].transcript)
+  }
+
+  if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
+
+  return (
+    <div>
+      <h1>Recording: {isRecording.toString()}</h1>
+      <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+        {isRecording ? 'Stop Recording' : 'Start Recording'}
+      </button>
+      <Unsplash height="500" width="500" keywords="spirit, energetic, sea">
+        <div className="text-xl font-bold text-white p-2 m-4 bg-black opacity-60">
+        {results.map((result, index) => (
+          index == results.length - 1 ? <p key={result.timestamp}>{result.transcript}.</p> : (index == 0 ? <p className="capitalize-first" key={result.timestamp}>{result.transcript},</p> : <p key={result.timestamp}>{result.transcript},</p>)
+        ))}
+        </div>
+        {interimResult && <div className="text-lg text-red-600 font-medium italic bg-white p-1 m-4">{interimResult}...</div>}
+      </Unsplash>
+
+    </div>
   );
 }

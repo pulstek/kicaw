@@ -1036,6 +1036,11 @@ react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+react-hook-speech-to-text@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/react-hook-speech-to-text/-/react-hook-speech-to-text-0.7.0.tgz#cfb9e6512852d9e4b86ba0c1d2864902eb849f1f"
+  integrity sha512-iN8N6ETJJNBjMMzW5oV0HbxMFewTz7wB11vc0kdR8VxoZs4as6ujTvVTl6TDNLc/+wjrQ308sjDCjWCGmPd3JQ==
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -1079,6 +1084,18 @@ react-side-effect@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
+
+react-speech-recognition@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/react-speech-recognition/-/react-speech-recognition-3.8.2.tgz#c82e187db92e32e506f0593d80a2347f2079e0fd"
+  integrity sha512-ZbA8wNNdWPAiN7tHsMc/cgfRkssAQwL3F8yMDEbuxLCT0II7YrNurNb3hAq5X58+zMn7YQO+S3OZt0mp5QA38w==
+
+react-unsplash-wrapper@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-unsplash-wrapper/-/react-unsplash-wrapper-1.1.5.tgz#53c1f9c133a0d8199c961f987f7320ab41c49341"
+  integrity sha512-x+Cu6lvj8GCRqQSVMLs4qzLcvWe/sQrSvH3EKHieoJF7ekrD2AsUV607oQLZIu3/RxfRnzPCa42fDcBF08wAkg==
+  dependencies:
+    prop-types "^15.7.2"
 
 react@^17.0.0:
   version "17.0.2"
