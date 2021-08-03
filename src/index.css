@@ -3,39 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  /* inter-regular - latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: optional;
-    src: url('/fonts/inter-regular-webfont.woff2') format('woff2'),
-      url('/fonts/inter-regular-webfont.woff') format('woff');
-  }
 
-  /* inter-500 - latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-display: optional;
-    src: url('/fonts/inter-medium-webfont.woff2') format('woff2'),
-      url('/fonts/inter-medium-webfont.woff') format('woff');
-  }
-
-  /* inter-700 - latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: optional;
-    src: url('/fonts/inter-bold-webfont.woff2') format('woff2'),
-      url('/fonts/inter-bold-webfont.woff') format('woff');
-  }
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
   /* Write your own custom base styles here */
   h1 {
     @apply text-3xl font-bold md:text-5xl font-primary;
+  }
+
+  .quotes_text {
+    font-family: 'DM Sans', sans-serif;
   }
 
   h2 {
