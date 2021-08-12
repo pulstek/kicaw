@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useSpeechToText from 'react-hook-speech-to-text';
 import Unsplash from 'react-unsplash-wrapper'
-import axios from 'axios'
 import ContentEditable from 'react-contenteditable'
 import { Button } from '@supabase/ui'
 import { exportComponentAsJPEG } from 'react-component-export-image';
-
+import UnsplashImage from '../components/UnsplashImage'
 
 export default function Home() {
   /*
@@ -32,29 +31,15 @@ export default function Home() {
 
   // Refs
   let contentEditable = React.createRef()
-  const componentRef = useRef();
+  let componentRef = useRef();
 
   // State
-  const [randCount, setCount] = useState(0)
-  const keywords = ['spirit', 'energetic', 'sea', 'forest', 'sky', 'night']
-  const [keyword, setKeyword] = useState("")
+  const [count, setCount] = useState(0)
+  const [keyword, setKeyword] = useState()
   const [transcript, setTranscript] = useState([])
-  const [isClear, setClear] = useState(false)
-  const [quoteEl, setEl] = useState(`<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-60">Start record button or click this area to add quotes.</p>`)
-  const [isLoading, setLoading] = useState(false)
-
-  // Effects
-  useEffect(async () => {
-    if(randCount < keywords.length - 1) {
-      setKeyword(keywords[randCount])
-    } else if(randCount > keywords.length - 1) {
-      setCount(0)
-    }
-  }, [randCount])
-
-  useEffect(() => {
-    setLoading(!isLoading)
-  }, [Unsplash])
+  const [isStop, setStop] = useState(false)
+  const [quoteEl, setEl] = useState(`<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-60">Start record button or click this area to add and edit quotes.</p>`)
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     if (typeof results[0] === 'object' && results[0] !== null) {
@@ -79,6 +64,12 @@ export default function Home() {
     }
   }, [results])
 
+  useEffect(() => {
+    setStop(!isStop)
+    return () => {
+      setStop(!isStop)
+    }
+  }, [stopSpeechToText && results])
   /*
    * METHODS ZONE
   */
@@ -91,14 +82,27 @@ export default function Home() {
     console.log(evt.target.value)
   }
 
+  const handleRandom = () => {
+    setCount(count + 1)
+    if(count > 10) {
+      setCount(0)
+    }
+  }
+
+  const canvas2img = () => {
+    html2canvas(document.getElementById("quotes")).then(function(canvas) {
+      document.body.appendChild(canvas)
+    })
+  }
+
   return (
-    <main>
     <section className="justify-center mx-auto items-center flex flex-col space-y-4 mt-4 container">
       <p className="text-lg opacity-80 rounded text-white text-center p-2 font-bold mb-2 bg-black">Recording: {isRecording.toString() == 'true' ? <span className="text-red-600">true</span> : <span className="text-green-600">false</span>}</p>
-      <div ref={componentRef}>
-         <Unsplash height="500" width="500" keywords={keyword} alt="img-loading">
+      <div className="flex flex-row space-x-8">
+      <div ref={componentRef} id="quotes" >
+         <UnsplashImage imgId={count}>
           <ContentEditable
-            className="text-xl font-bold text-white p-4 w-3/4 m-2 bg-black opacity-60 quotes_text"
+            className="quotes_text"
             innerRef={contentEditable}
             html={quoteEl} // innerHTML of the editable div
             disabled={false}       // use true to disable editing
@@ -106,18 +110,23 @@ export default function Home() {
             tagName='div' // Use a custom HTML tag (uses a div by default)
           />
           {interimResult && <div className="text-lg text-red-600 font-medium italic bg-white p-1 m-4">{interimResult}...</div>}
-        </Unsplash>
+        </UnsplashImage>
       </div>
-      <div className="flex flex-row space-x-2 items-center justify-center">
-        <button className="transition duration-500 font-bold bg-green-600 p-2 text-white rounded-lg hover:opacity-70"onClick={() => setCount(randCount + 1)}>Change Background</button>
-        <button className="transition duration-500 font-bold bg-black p-2 text-white rounded-lg hover:opacity-70" onClick={() => exportComponentAsJPEG(componentRef, {fileName : 'quotes-kicaw'})}>
+      <div className="flex flex-col items-center justify-center space-y-2">
+        <button className="transition duration-500 font-bold bg-black p-2 text-white rounded-lg hover:opacity-70 w-full" onClick={()  => exportComponentAsJPEG(componentRef)}>
+          Share Quotes
+        </button>
+        <button className="transition duration-500 font-bold bg-black p-2 text-white rounded-lg hover:opacity-70" onClick={()  => exportComponentAsJPEG(componentRef)}>
           Download Quotes
         </button>
-        <button className="transition duration-500 font-bold bg-red-600 p-2 text-white rounded-lg hover:opacity-70" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          {isRecording ? 'Stop Recording' : 'Start Recording'}
-        </button>
+      </div>
+      </div>
+      <div className="flex flex-row space-x-4 items-center justify-center">
+      <button className="transition duration-500 font-bold bg-green-600 p-2 text-white rounded-lg hover:opacity-70"onClick={handleRandom}>Change Background</button>
+      <button className={`transition duration-500 font-bold ${isRecording ? 'bg-red-600': 'bg-yellow-600'} p-2 text-white rounded-lg hover:opacity-70`} onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+          {isRecording ? 'Stop Recording' : (isStop ? 'Start Recording': 'Reset Recording')}
+      </button>
       </div>
     </section>
-    </main>
   )
 }

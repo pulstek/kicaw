@@ -7,9 +7,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@stitches/react": "^1.0.0-canary.7",
     "@supabase/ui": "^0.32.0",
     "@tailwindcss/forms": "^0.3.2",
     "axios": "^0.21.1",
+    "html-element-to-image": "^2.1.1",
+    "html-to-image": "^1.7.0",
+    "html2canvas": "^1.2.1",
     "react": "^17.0.0",
     "react-component-export-image": "^1.0.6",
     "react-contenteditable": "^3.3.5",

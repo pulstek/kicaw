@@ -316,6 +316,11 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
+"@stitches/react@^1.0.0-canary.7":
+  version "1.0.0-canary.7"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.0.0-canary.7.tgz#170dd643e79265e9520199e9fbe2a210212d5352"
+  integrity sha512-IeRG9EKjJFG8Z18jjTK6FNXkZK0fHK0pw7NTOddQKxGpBQSQHi8Mi+OcUVC4+LbK5cGI2LRX5l3xNh+tmM1Ipw==
+
 "@supabase/ui@^0.32.0":
   version "0.32.0"
   resolved "https://registry.yarnpkg.com/@supabase/ui/-/ui-0.32.0.tgz#c27ae82f5ba4a783195cadf0f5546e6d805453fe"
@@ -696,6 +701,13 @@ css-line-break@2.0.0:
   dependencies:
     base64-arraybuffer "^0.2.0"
 
+css-line-break@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/css-line-break/-/css-line-break-2.0.1.tgz#3dc74c2ed5eb64211480281932475790243e7338"
+  integrity sha512-gwKYIMUn7xodIcb346wgUhE2Dt5O1Kmrc16PWi8sL4FTfyDj8P5095rzH7+O8CTZudJr+uw2GCI/hwEkDJFI2w==
+  dependencies:
+    base64-arraybuffer "^0.2.0"
+
 css-unit-converter@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/css-unit-converter/-/css-unit-converter-1.1.2.tgz#4c77f5a1954e6dbff60695ecb214e3270436ab21"
@@ -1069,10 +1081,20 @@ homedir-polyfill@^1.0.1:
   dependencies:
     parse-passwd "^1.0.0"
 
+html-element-to-image@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/html-element-to-image/-/html-element-to-image-2.1.1.tgz#775987c7340b41f5af2d3ba7bb1a74ec9cc759aa"
+  integrity sha512-zFKE/lciD7GMVuHrT/zdjHmHwgnAGqig/sgAuD3DxlR89eR76ZzFJ0w/Npl5uvi9a+1fDUJ26W26ExGeOCNy/g==
+
 html-tags@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
+
+html-to-image@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/html-to-image/-/html-to-image-1.7.0.tgz#4ca93bb90c0b9392edaafbfd5d94e8f0d666e18b"
+  integrity sha512-6egK8mOXMw82nLjj5g3ohERuzrTglgR9+Q6A2cqa7UiuSSKHuFxpABZJSfZztj0EdLC6tAePZJAhjPr4bbU9tw==
 
 html2canvas@^1.0.0-rc.5, html2canvas@^1.0.0-rc.7:
   version "1.1.5"
@@ -1080,6 +1102,13 @@ html2canvas@^1.0.0-rc.5, html2canvas@^1.0.0-rc.7:
   integrity sha512-c9qzvAnE63+NcSXYhI454C9Ga/YZroEaI7aSmC3+APWrW6cdzOTo9/K4zwHi3LH/YGwmU/HO/xO7qALB2Kue5g==
   dependencies:
     css-line-break "2.0.0"
+
+html2canvas@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/html2canvas/-/html2canvas-1.2.1.tgz#43fd7026bae0850a91c878de239ba49d9bddf26a"
+  integrity sha512-XoP12gER5pvxBADy4KKTMinZ69PP/+EZbILEk+WDCJFPIkhbREwMy2nhuMBFWPUDGWCw1DCrhDlbADJ5m8dC5g==
+  dependencies:
+    css-line-break "2.0.1"
 
 iconv-lite@^0.4.24:
   version "0.4.24"
