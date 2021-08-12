@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "commit": "git-cz"
   },
   "dependencies": {
     "@stitches/react": "^1.0.0-canary.7",
