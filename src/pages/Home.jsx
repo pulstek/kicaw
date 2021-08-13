@@ -5,6 +5,7 @@ import ContentEditable from 'react-contenteditable'
 import { Button } from '@supabase/ui'
 import { exportComponentAsJPEG } from 'react-component-export-image';
 import UnsplashImage from '../components/UnsplashImage'
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
   let componentRef = useRef();
 
   // State
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(1)
   const [keyword, setKeyword] = useState()
   const [transcript, setTranscript] = useState([])
   const [isStop, setStop] = useState(false)
@@ -90,10 +91,14 @@ export default function Home() {
     }
   }
 
-  const canvas2img = () => {
-    html2canvas(document.getElementById("quotes")).then(function(canvas) {
-      document.body.appendChild(canvas)
-    })
+  const handleShare = () => {
+    toJpeg(document.getElementById('quotes'), { quality: 0.95 })
+      .then(function (dataUrl) {
+        const link = document.createElement('a')
+        link.download = 'my-image-name.png'
+        link.href = dataUrl
+        console.log(link.href)
+    });
   }
 
   return (
@@ -124,7 +129,7 @@ export default function Home() {
         </UnsplashImage>
       </div>
       <div className="flex flex-col items-center justify-center space-y-2">
-        <button className="transition text-base duration-500 font-bold bg-black p-2 text-white rounded-lg hover:opacity-70 w-full flex flex-row space-x-2 items-center justify-center" onClick={()  => exportComponentAsJPEG(componentRef)}>
+        <button className="transition text-base duration-500 font-bold bg-black p-2 text-white rounded-lg hover:opacity-70 w-full flex flex-row space-x-2 items-center justify-center" onClick={handleShare}>
           <svg
             width="20"
             height="20"
