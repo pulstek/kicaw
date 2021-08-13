@@ -33,5 +33,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms'), capitalizeFirst],
+  plugins: [require('@tailwindcss/forms'), capitalizeFirst, require('daisyui'),  require('@tailwindcss/typography')],
 };
