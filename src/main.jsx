@@ -9,11 +9,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Helmet
       defaultTitle='Kicaw - Create your quotes with speech recorder'
-      titleTemplate='Kicaw'
+      titleTemplate='Kicaw - Easy make quotes from your speech'
     >
       <meta charSet='utf-8' />
       <html lang='id' amp />
-      <title>Kicaw - Easy make quotes from your speech</title>
       <meta name='title' content='Kicaw - Easy make quotes from your speech' />
       <meta
         name='description'
