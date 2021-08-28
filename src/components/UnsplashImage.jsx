@@ -12,7 +12,11 @@ export default function UnsplashImage(props) {
   const sectionImg = css({
     background: `url(${imgList[props.imgId]})`,
     width: '500px',
-    height: '500px'
+    height: '500px',
+    '@media (max-width: 500px)': {
+      width: '300px',
+      height: '300px',
+    }
   })
 
   const randomNum = Math.floor(Math.random() * 45)
@@ -29,12 +33,11 @@ export default function UnsplashImage(props) {
     let imgRes = await unsplash.collections.getPhotos({ collectionId: '3694365', page: randomNum })
       .then(res => res.response.results.map(data => data.urls.regular))
     setImg(imgRes)
-    console.log(imgRes)
   }, [])
 
   return (
-    <section id="unsplash_image_section" className={`items-center justify-center ${sectionImg()}`}>
-      <div className={`${childStyle()} items-center justify-center text-xl font-bold text-white p-4 w-3/4 bg-black opacity-60`}>{props.children}</div>
+    <section id="unsplash_image_section" className={`items-center justify-center ${sectionImg()}  w-32 h-32 md:w-auto md:h-auto`}>
+      <div className={`${childStyle()} items-center justify-center text-lg md:text-xl font-bold text-white p-4 w-3/4 bg-black opacity-60`}>{props.children}</div>
     </section>
   )
 }

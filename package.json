@@ -14,7 +14,6 @@
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.1",
     "axios": "^0.21.1",
-    "daisyui": "^1.11.1",
     "html-element-to-image": "^2.1.1",
     "html-to-image": "^1.7.0",
     "html2canvas": "^1.2.1",
