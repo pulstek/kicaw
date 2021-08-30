@@ -11,8 +11,8 @@ export default function UnsplashImage(props) {
   const [imgList, setImg] = useState({})
   const sectionImg = css({
     background: `url(${imgList[props.imgId]})`,
-    width: '500px',
-    height: '500px',
+    width: '450px',
+    height: '450px',
     '@media (max-width: 500px)': {
       width: '300px',
       height: '300px',
