@@ -7,6 +7,7 @@ import { exportComponentAsJPEG } from 'react-component-export-image';
 import UnsplashImage from '@/components/UnsplashImage';
 import NavBar from '@/components/NavBar';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import { nanoid } from 'nanoid';
 
 export default function Home() {
   const {
@@ -131,7 +132,11 @@ export default function Home() {
         <div className='flex flex-col items-center justify-center space-y-2  text-sm md:text-base'>
           <button
             className='transition duration-500 font-bold bg-black p-2 text-white shadow-lg hover:opacity-70'
-            onClick={() => exportComponentAsJPEG(componentRef)}
+            onClick={() =>
+              exportComponentAsJPEG(componentRef, {
+                fileName: `quotes-${nanoid(3)}`,
+              })
+            }
           >
             Download Quotes
           </button>
