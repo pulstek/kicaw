@@ -8,6 +8,7 @@ import UnsplashImage from '@/components/UnsplashImage';
 import NavBar from '@/components/NavBar';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { nanoid } from 'nanoid';
+import Hiw from '@/components/Hiw'
 
 export default function Home() {
   const {
@@ -41,6 +42,7 @@ export default function Home() {
   );
   const [isLoading, setLoading] = useState(true);
   const defaultEl = `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Start record button or click this area to add and edit quotes.</p>`
+  const [isOpen, setOpen] = useState(true)
 
   useEffect(() => {
     if (typeof results[0] === 'object' && results[0] !== null) {
@@ -113,8 +115,9 @@ export default function Home() {
 
   return (
     <section className='content justify-center items-center flex flex-col space-y-6 md:space-y-6 my-6 md:mt-0 mt-12'>
-      <NavBar isRecording={isRecording} />
+      <NavBar isRecording={isRecording} setOpen={setOpen} />
       <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8'>
+        <Hiw isOpen={isOpen} setOpen={setOpen} />
         <div ref={componentRef} id='quotes'>
           <UnsplashImage imgId={count}>
             <ContentEditable
