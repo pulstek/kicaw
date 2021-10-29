@@ -49,13 +49,14 @@ export default function UnsplashImage(props) {
           {props.children}
         </div>
       </section>
+      <div className="flex flex-row items-center justify-center space-x-3">
       <a
         href={imgList[props.imgId]?.links?.html}
-        className='font-bold hover:text-green-500'
+        className='font-bold hover:text-green-500 hover:bg-black p-2 bg-white rounded-md w-min'
       >
-        Image Source
+       Source
       </a>
-      <p>
+      <p className="p-2 text-white bg-indigo-800">
         Photo by{' '}
         <a
           href={imgList[props.imgId]?.user?.links?.html}
@@ -71,6 +72,7 @@ export default function UnsplashImage(props) {
           Unsplash
         </a>{' '}
       </p>
+      </div>
     </div>
   );
 }

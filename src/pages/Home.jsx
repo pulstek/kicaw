@@ -37,9 +37,10 @@ export default function Home() {
   const [transcript, setTranscript] = useState([]);
   const [isStop, setStop] = useState(false);
   const [quoteEl, setEl] = useState(
-    `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-60">Start record button or click this area to add and edit quotes.</p>`
+    `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Start record button or click this area to add and edit quotes.</p>`
   );
   const [isLoading, setLoading] = useState(true);
+  const defaultEl = `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Start record button or click this area to add and edit quotes.</p>`
 
   useEffect(() => {
     if (typeof results[0] === 'object' && results[0] !== null) {
@@ -84,7 +85,9 @@ export default function Home() {
 
   const handleClearAudio = () => {
     results.splice(0, results.length);
+    setEl(defaultEl)
   };
+
   const handleChange = (evt) => {
     setEl(evt.target.value);
     console.log(evt.target.value);
@@ -144,7 +147,7 @@ export default function Home() {
       </div>
       <div className='flex flex-row space-x-4 items-center justify-center'>
         <button
-          className='transition text-sm duration-500 font-bold bg-green-600 p-2 text-white shadow-lg hover:opacity-70 text-sm md:text-base'
+          className='transition text-sm duration-500 font-bold bg-green-600 p-2 text-white shadow-lg hover:opacity-70 md:text-base'
           onClick={handleRandom}
         >
           Change Background
@@ -155,11 +158,10 @@ export default function Home() {
           } p-2 text-white shadow-lg hover:opacity-70 text-sm md:text-base`}
           onClick={isRecording ? stopSpeechToText : startSpeechToText}
         >
-          {isRecording
-            ? 'Stop Recording'
-            : isStop
-            ? 'Start Recording'
-            : 'Reset Recording'}
+          {isRecording ? 'Stop Recording' : 'Start Voice Input'}
+        </button>
+        <button className="bg-red-900 p-2 text-white font-bold shadow-lg hover:opacity-70 text-sm md:text-base hover:bg-red-600" onClick={handleClearAudio}>
+          Clear Quotes
         </button>
       </div>
     </section>
