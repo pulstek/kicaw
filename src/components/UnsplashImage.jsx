@@ -52,7 +52,7 @@ export default function UnsplashImage(props) {
       <div className="flex flex-row items-center justify-center space-x-3">
       <a
         href={imgList[props.imgId]?.links?.html}
-        className='font-bold hover:text-green-500 hover:bg-black p-2 bg-white rounded-md w-min'
+        className='font-bold hover:text-green-500 hover:bg-dark p-2 bg-white rounded-md w-min'
       >
        Source
       </a>

@@ -18,6 +18,7 @@ specifiers:
   react: ^17.0.0
   react-component-export-image: ^1.0.6
   react-contenteditable: ^3.3.5
+  react-device-detect: ^2.1.2
   react-dom: ^17.0.0
   react-helmet: ^6.1.0
   react-hook-speech-to-text: ^0.7.0
@@ -44,6 +45,7 @@ dependencies:
   react: 17.0.2
   react-component-export-image: 1.0.6
   react-contenteditable: 3.3.6_react@17.0.2
+  react-device-detect: 2.1.2_react-dom@17.0.2+react@17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-helmet: 6.1.0_react@17.0.2
   react-hook-speech-to-text: 0.7.0_react-dom@17.0.2+react@17.0.2
@@ -1649,6 +1651,17 @@ packages:
       react: 17.0.2
     dev: false
 
+  /react-device-detect/2.1.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-N42xttwez3ECgu4KpOL2ICesdfoz8NCBfmc1rH9FRYSjH7NmMyANPSrQ3EvAtJyj/6TzJNhrANSO38iXjCB2Ug==}
+    peerDependencies:
+      react: '>= 0.14.0 < 18.0.0'
+      react-dom: '>= 0.14.0 < 18.0.0'
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      ua-parser-js: 0.7.31
+    dev: false
+
   /react-dom/17.0.2_react@17.0.2:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
@@ -1991,6 +2004,10 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
+    dev: false
+
+  /ua-parser-js/0.7.31:
+    resolution: {integrity: sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ==}
     dev: false
 
   /universalify/2.0.0:

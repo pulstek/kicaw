@@ -9,6 +9,7 @@ import NavBar from '@/components/NavBar';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { nanoid } from 'nanoid';
 import Hiw from '@/components/Hiw'
+import { isChrome } from 'react-device-detect'
 
 export default function Home() {
   const {
@@ -38,10 +39,10 @@ export default function Home() {
   const [transcript, setTranscript] = useState([]);
   const [isStop, setStop] = useState(false);
   const [quoteEl, setEl] = useState(
-    `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Start record button or click this area to add and edit quotes.</p>`
+    `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Click this area to add and edit quotes.</p>`
   );
   const [isLoading, setLoading] = useState(true);
-  const defaultEl = `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Start record button or click this area to add and edit quotes.</p>`
+  const defaultEl = `<p className="text-xl font-bold text-white p-4 w-3/4 m-4 bg-black opacity-80">Click this area to add and edit quotes.</p>`
   const [isOpen, setOpen] = useState(true)
 
   useEffect(() => {
@@ -155,6 +156,7 @@ export default function Home() {
         >
           Change Background
         </button>
+        {isChrome &&
         <button
           className={`transition duration-500 font-bold ${
             isRecording ? 'bg-red-600' : 'bg-yellow-600'
@@ -162,7 +164,7 @@ export default function Home() {
           onClick={isRecording ? stopSpeechToText : startSpeechToText}
         >
           {isRecording ? 'Stop Recording' : 'Start Voice Input'}
-        </button>
+        </button>}
         <button className="bg-red-900 p-2 text-white font-bold shadow-lg hover:opacity-70 text-sm md:text-base hover:bg-red-600" onClick={handleClearAudio}>
           Clear Quotes
         </button>
